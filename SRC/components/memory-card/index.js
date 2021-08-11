@@ -1,5 +1,5 @@
 
-const createMemoryCard = (className ,src , alt ) =>  `
+const createMemoryCard = ({src , alt , className}) =>  `
 
 <article class="memory-card ${className}">
 <img 
@@ -12,8 +12,6 @@ onclick = handleClick();
 </article>
 
 `;
-   
-
 
 
 const handleClick = () => console.log("foi");
