@@ -37,6 +37,7 @@ position : relative;
     
     .memory-card .card.-front{
     background-color: #fff;
+    
   
     }
     
@@ -68,7 +69,7 @@ position : relative;
 
 return ({src , alt , className}) => `
 
-<div class="memory-card -active" onclick = "handleClick(this)">
+<div class="memory-card" onclick = "handleClick(this)">
 <article class="card -front"> 
 <img 
 src= "${src}"
@@ -96,6 +97,23 @@ class='icon'
 
 
 const handleClick = $component => {
+
+    if(qtdActiveMemoryCard < 2){
+        $component.classList.toggle("-active");
+
+    }
     
-    $component.classList.toggle("-active");
-}
+    if(qtdActiveMemoryCard == 1){
+        setTimeout(() => {
+            const $activeMemoryCards = document.querySelectorAll(".memory-card.-active");
+
+        $activeMemoryCards.forEach($memoryCard => {
+            $memoryCard.classList.remove("-active");
+        });
+        qtdActiveMemoryCard = 0;
+
+        } , 1500);
+
+    }
+    
+};
